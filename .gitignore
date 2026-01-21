@@ -1,0 +1,52 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.example
+
+# Build output
+dist/
+
+# Logs
+*.log
+output.log
+server.log
+
+# Debug/diagnostic files
+dump-content.ts
+inspect-page.ts
+test-discovery.ts
+test_camoufox.ts
+cleanup.ts
+deep-rescue.ts
+diagnose-structure.ts
+fix-settings.ts
+manual-fix.ts
+rescue.ts
+site-audit.ts
+
+# Debug output files
+*.html
+*.png
+*.txt
+home_content.html
+login-page.html
+login-failure.png
+raw_content_12.txt
+
+# IDE
+.vscode/
+.idea/
+.qoder/
+
+# Project management
+openspec/
+
+# Qoder files
+QODER.md
+AGENTS.md
+
+# OS
+.DS_Store
+Thumbs.db
