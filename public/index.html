@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI WordPress Orchestrator</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; line-height: 1.6; background-color: #f4f7f9; }
+        .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; margin-top: 0; }
+        textarea { width: 100%; height: 100px; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px; margin-bottom: 20px; box-sizing: border-box; resize: vertical; }
+        button { background-color: #3498db; color: white; border: none; padding: 12px 24px; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: 600; transition: background 0.3s; }
+        button:hover { background-color: #2980b9; }
+        button:disabled { background-color: #bdc3c7; cursor: not-allowed; }
+        .secondary-btn { background-color: #95a5a6; margin-left: 10px; }
+        .secondary-btn:hover { background-color: #7f8c8d; }
+        .undo-btn { background-color: #e74c3c; float: right; }
+        .undo-btn:hover { background-color: #c0392b; }
+        #revisions-section { margin-top: 30px; border-top: 2px solid #eee; padding-top: 20px; }
+        .revision-item { display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 10px 15px; margin-bottom: 8px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; }
+        .revision-info { flex-grow: 1; }
+        .revision-date { color: #7f8c8d; font-size: 12px; }
+        .undo-small-btn { background-color: #e74c3c; padding: 6px 12px; font-size: 12px; }
+        .publish-btn { background-color: #27ae60; margin-left: 5px; }
+        .preview-link { display: inline-block; background: #f39c12; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none; font-size: 12px; font-weight: bold; margin-right: 5px; }
+        #status { margin-top: 20px; padding: 15px; border-radius: 4px; display: none; }
+        .status-info { background-color: #e8f4fd; color: #2980b9; border: 1px solid #b3d7f2; }
+        .status-success { background-color: #eafaf1; color: #27ae60; border: 1px solid #c3e6cb; }
+        .status-error { background-color: #fdedec; color: #c0392b; border: 1px solid #f5c6cb; }
+        #plan-preview { margin-top: 30px; border-top: 2px solid #eee; padding-top: 20px; display: none; }
+        .command-item { background: #f9f9f9; padding: 10px; border-left: 4px solid #3498db; margin-bottom: 10px; font-family: monospace; font-size: 13px; }
+        .loader { border: 3px solid #f3f3f3; border-top: 3px solid #3498db; border-radius: 50%; width: 20px; height: 20px; animation: spin 2s linear infinite; display: inline-block; vertical-align: middle; margin-right: 10px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>WordPress AI Editor</h1>
+        <p>Describe what you want to change on your WordPress site:</p>
+        
+        <textarea id="prompt" placeholder="e.g., Add a hero section to the homepage and change the primary color to blue..."></textarea>
+        
+        <button id="plan-btn">Generate Plan</button>
+        
+        <div id="status"></div>
+        
+        <div id="plan-preview">
+            <h3>Proposed Change Plan</h3>
+            <p id="plan-explanation"></p>
+            <div id="command-list"></div>
+            <div style="margin-top: 20px;">
+                <button id="execute-btn">Apply Changes</button>
+                <button id="cancel-btn" class="secondary-btn">Cancel</button>
+            </div>
+        </div>
+
+        <div id="revisions-section">
+            <h3>Recent Sessions</h3>
+            <div id="revisions-list">
+                <p style="color: #7f8c8d;">Loading history...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const promptInput = document.getElementById('prompt');
+        const planBtn = document.getElementById('plan-btn');
+        const executeBtn = document.getElementById('execute-btn');
+        const cancelBtn = document.getElementById('cancel-btn');
+        const statusDiv = document.getElementById('status');
+        const planPreview = document.getElementById('plan-preview');
+        const planExplanation = document.getElementById('plan-explanation');
+        const commandList = document.getElementById('command-list');
+        const revisionsList = document.getElementById('revisions-list');
+
+        let currentPlan = null;
+
+        async function loadRevisions() {
+            try {
+                const response = await fetch('/api/sessions');
+                const data = await response.json();
+                if (data.error) throw new Error(data.error);
+
+                if (data.length === 0) {
+                    revisionsList.innerHTML = '<p style="color: #7f8c8d;">No session history found.</p>';
+                    return;
+                }
+
+                revisionsList.innerHTML = data.map(rev => `
+                    <div class="revision-item">
+                        <div class="revision-info">
+                            <strong>${rev.summary}</strong><br>
+                            <span class="revision-date">${new Date(rev.date).toLocaleString()}</span>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <button class="publish-btn" style="padding: 6px 12px; font-size: 12px; margin-right: 5px;" onclick="publishSession(${rev.id})">Go Live</button>
+                            <button class="undo-small-btn" onclick="undoSession(${rev.id})">Undo</button>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                revisionsList.innerHTML = `<p style="color: #c0392b;">Failed to load history: ${error.message}</p>`;
+            }
+        }
+
+        async function undoSession(id) {
+            if (!confirm('Are you sure you want to undo this session?')) return;
+            
+            showStatus('<div class="loader"></div> Rolling back session...', 'info');
+            try {
+                const response = await fetch('/api/undo', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ sessionId: id })
+                });
+                const data = await response.json();
+                if (data.error) throw new Error(data.error);
+
+                showStatus('Session undone successfully.', 'status-success');
+                loadRevisions();
+            } catch (error) {
+                showStatus(`Error: ${error.message}`, 'error');
+            }
+        }
+
+        async function publishSession(id) {
+            if (!confirm('Are you sure you want to make these changes live?')) return;
+            
+            showStatus('<div class="loader"></div> Publishing changes to production...', 'info');
+            try {
+                const response = await fetch('/api/publish', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ sessionId: id })
+                });
+                const data = await response.json();
+                if (data.error) throw new Error(data.error);
+
+                showStatus('Changes are now LIVE!', 'status-success');
+                loadRevisions();
+            } catch (error) {
+                showStatus(`Error: ${error.message}`, 'error');
+            }
+        }
+
+        // Expose to window for onclick
+        window.undoSession = undoSession;
+        window.publishSession = publishSession;
+
+        // Initial load
+        loadRevisions();
+
+        function showStatus(message, type = 'info') {
+            statusDiv.innerHTML = message;
+            statusDiv.className = `status-${type}`;
+            statusDiv.style.display = 'block';
+        }
+
+        function hideStatus() {
+            statusDiv.style.display = 'none';
+        }
+
+        planBtn.addEventListener('click', async () => {
+            const prompt = promptInput.value.trim();
+            if (!prompt) return alert('Please enter a prompt.');
+
+            planBtn.disabled = true;
+            showStatus('<div class="loader"></div> Thinking... DeepSeek is analyzing your request.', 'info');
+            planPreview.style.display = 'none';
+
+            try {
+                const response = await fetch('/api/plan', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt })
+                });
+                
+                const data = await response.json();
+                if (data.error) throw new Error(data.error);
+
+                currentPlan = data;
+                planExplanation.textContent = data.explanation;
+                commandList.innerHTML = data.commands.map(cmd => 
+                    `<div class="command-item">${JSON.stringify(cmd)}</div>`
+                ).join('');
+                
+                planPreview.style.display = 'block';
+                hideStatus();
+            } catch (error) {
+                showStatus(`Error: ${error.message}`, 'error');
+            } finally {
+                planBtn.disabled = false;
+            }
+        });
+
+        executeBtn.addEventListener('click', async () => {
+            if (!currentPlan) return;
+
+            executeBtn.disabled = true;
+            showStatus('<div class="loader"></div> Applying changes to your WordPress site...', 'info');
+
+            try {
+                const response = await fetch('/api/execute', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ plan: currentPlan })
+                });
+                
+                const data = await response.json();
+                if (data.error) throw new Error(data.error);
+
+                let resultsHtml = '<strong>Staged Changes:</strong><ul>';
+                if (data.results && data.results.length > 0) {
+                    resultsHtml += data.results.map(res => {
+                        console.log('Result item:', res);
+                        if (res.includes('http')) {
+                            const match = res.match(/https?:\/\/[^\s]+/);
+                            if (match) {
+                                const url = match[0];
+                                return `<li>${res.replace(url, `<a href="${url}" target="_blank" class="preview-link">Preview Change</a>`)}</li>`;
+                            }
+                        }
+                        return `<li>${res}</li>`;
+                    }).join('');
+                }
+                resultsHtml += '</ul><p style="font-size: 0.85em; color: #666;"><em>Note: You must be logged in to your WordPress admin in this browser to see drafts. If you get a 404, check the Proposed Plan or go ahead and click "Go Live".</em></p>';
+
+                showStatus(resultsHtml, 'status-success');
+                planPreview.style.display = 'none';
+                promptInput.value = '';
+                loadRevisions();
+            } catch (error) {
+                showStatus(`Error: ${error.message}`, 'error');
+            } finally {
+                executeBtn.disabled = false;
+            }
+        });
+
+        cancelBtn.addEventListener('click', () => {
+            planPreview.style.display = 'none';
+            currentPlan = null;
+        });
+    </script>
+</body>
+</html>
