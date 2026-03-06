@@ -1,0 +1,33 @@
+{
+  "name": "wordpress-copier-orchestrator",
+  "version": "1.0.0",
+  "description": "AI orchestration layer for WordPress builder using DeepSeek",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "build": "tsc",
+    "test": "jest"
+  },
+  "dependencies": {
+    "axios": "^1.13.2",
+    "camoufox-js": "^0.8.5",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^5.2.1",
+    "openai": "^4.104.0",
+    "playwright": "^1.57.0",
+    "playwright-core": "^1.57.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^20.19.30",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.4.6",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
