@@ -1,0 +1,454 @@
+/* SharedFare Custom Styles - Brand Colors: #3EAFFA (RGB 62, 175, 250) */
+:root {
+    --primary-blue: #3EAFFA;
+    --primary-blue-dark: #2B9FE8;
+    --light-blue-bg: #E6F7FF;
+    --gradient-start: #6BC5FF;
+    --gradient-end: #3EAFFA;
+    --text-dark: #1E293B;
+    --text-light: #64748B;
+    --white: #FFFFFF;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text-dark);
+    background-color: #F8FAFC;
+}
+
+.site-header {
+    background-color: var(--primary-blue);
+    padding: 1rem 0;
+}
+
+.hero-section {
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    padding: 6rem 2rem;
+    text-align: center;
+    color: var(--white);
+    margin-bottom: 4rem;
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hero-section p {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background-color: var(--primary-blue-dark);
+    color: var(--white);
+    padding: 0.875rem 2rem;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: background-color 0.3s;
+    border: 2px solid var(--primary-blue-dark);
+}
+
+.btn-primary:hover {
+    background-color: #1D4ED8;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--white);
+    padding: 0.875rem 2rem;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: background-color 0.3s;
+    border: 2px solid var(--white);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 3rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 3px solid var(--primary-blue);
+    display: inline-block;
+    width: auto;
+}
+
+.section-title-wrapper {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.coverage-plans {
+    padding: 4rem 2rem;
+    background-color: var(--light-blue-bg);
+}
+
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.plan-card {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.plan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.plan-card h3 {
+    color: var(--primary-blue);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.plan-card p {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.plan-card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+
+.plan-card ul li {
+    padding: 0.5rem 0;
+    color: var(--text-dark);
+}
+
+.plan-card ul li:before {
+    content: "✓ ";
+    color: var(--primary-blue);
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.plan-card .btn-primary {
+    width: 100%;
+    text-align: center;
+}
+
+.coverage-includes {
+    padding: 4rem 2rem;
+    background-color: var(--white);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--card-shadow);
+    text-align: center;
+    border: 2px solid var(--light-blue-bg);
+    transition: border-color 0.3s;
+}
+
+.feature-card:hover {
+    border-color: var(--primary-blue);
+}
+
+.feature-card h3 {
+    color: var(--primary-blue);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.faq-section {
+    padding: 4rem 2rem;
+    background-color: var(--light-blue-bg);
+}
+
+.faq-section h2 {
+    color: var(--primary-blue);
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.faq-item {
+    background-color: var(--white);
+    margin-bottom: 1rem;
+    border-radius: 0.375rem;
+    overflow: hidden;
+}
+
+.faq-question {
+    padding: 1.25rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: var(--text-dark);
+    transition: background-color 0.3s;
+}
+
+.faq-question:hover {
+    background-color: var(--light-blue-bg);
+}
+
+.faq-question:after {
+    content: "▼";
+    font-size: 0.875rem;
+    color: var(--primary-blue);
+}
+
+.faq-answer {
+    padding: 0 1.25rem 1.25rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    display: none;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+.faq-item.active .faq-question:after {
+    content: "▲";
+}
+
+.fleet-hero {
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--white);
+}
+
+.fleet-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.fleet-hero p {
+    font-size: 1.125rem;
+    opacity: 0.95;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+}
+
+.benefits-section {
+    padding: 4rem 2rem;
+    background-color: var(--white);
+}
+
+.pricing-table {
+    max-width: 900px;
+    margin: 3rem auto;
+    background-color: var(--white);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+}
+
+.pricing-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.pricing-table thead {
+    background-color: var(--primary-blue);
+    color: var(--white);
+}
+
+.pricing-table th,
+.pricing-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--light-blue-bg);
+}
+
+.pricing-table tbody tr:hover {
+    background-color: var(--light-blue-bg);
+}
+
+.cta-section {
+    background: linear-gradient(135deg, var(--primary-blue-dark) 0%, var(--primary-blue) 100%);
+    padding: 3rem 2rem;
+    text-align: center;
+    color: var(--white);
+    margin: 4rem 0;
+    border-radius: 0.5rem;
+}
+
+.cta-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.cta-section p {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    .section-title {
+        font-size: 1.5rem;
+    }
+    .plans-grid,
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Footer Styles */
+.site-footer {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 2rem 0;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.site-footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.site-footer a {
+    color: var(--white);
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Pricing Table Styles */
+.pricing-table {
+    width: 100%;
+    max-width: 900px;
+    margin: 2rem auto;
+    border-collapse: collapse;
+    background: var(--white);
+    box-shadow: var(--card-shadow);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.pricing-table thead {
+    background-color: var(--primary-blue);
+    color: var(--white);
+}
+
+.pricing-table th,
+.pricing-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.pricing-table tbody tr:hover {
+    background-color: var(--light-blue-bg);
+}
+
+/* Key Benefits Section */
+.key-benefits-section,
+.whats-included-section {
+    padding: 4rem 2rem;
+    background-color: #F8FAFC;
+}
+
+.benefits-grid,
+.included-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+}
+
+.benefit-card,
+.included-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+}
+
+.benefit-card h3,
+.included-card h3 {
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+.included-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.included-card ul li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.included-card ul li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--primary-blue);
+    font-weight: bold;
+}

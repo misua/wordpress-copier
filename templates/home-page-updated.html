@@ -1,0 +1,140 @@
+<!-- Hero Section -->
+<div class="hero-section">
+    <h1>Cover Protection for Rideshare & Fleet Drivers</h1>
+    <p>SharedFare provides affordable, reliable coverage for rideshare drivers and fleet operators — including vehicle claims, protection plans, and 24/7 incident support.</p>
+    <div class="hero-buttons">
+        <a href="/apply-now/" class="btn btn-primary">Get a Quote</a>
+        <a href="/coverage/" class="btn btn-secondary">Learn More</a>
+    </div>
+</div>
+
+<!-- Coverage Plans -->
+<section class="coverage-plans-section">
+    <h2>Our Coverage Plans</h2>
+    <div class="plans-grid">
+        <div class="plan-card">
+            <h3>Driver Protection Plan</h3>
+            <p>Personal coverage designed for individual rideshare and delivery drivers.</p>
+            <ul>
+                <li>Includes accident support, claims assistance, and fast payouts.</li>
+            </ul>
+            <a href="/plans/" class="btn btn-primary">Get Covered</a>
+        </div>
+        <div class="plan-card">
+            <h3>Fleet Coverage Plan</h3>
+            <p>Cover solutions for fleet operators with 3-250+ vehicles.</p>
+            <ul>
+                <li>Centralized claims, bulk pricing, and driver onboarding support.</li>
+            </ul>
+            <a href="/fleet-coverage/" class="btn btn-primary">Learn More</a>
+        </div>
+        <div class="plan-card">
+            <h3>Premium Claims Advantage</h3>
+            <p>Priority claims processing, dedicated support managers, and enhanced vehicle protection.</p>
+            <ul>
+                <li>Perfect for high-volume operators.</li>
+            </ul>
+            <a href="/contact/" class="btn btn-primary">Upgrade</a>
+        </div>
+    </div>
+</section>
+
+<!-- What Our Coverage Includes -->
+<section class="coverage-includes-section">
+    <h2>What Our Coverage Includes</h2>
+    <div class="includes-grid">
+        <div class="include-card">
+            <h3>Accident Support</h3>
+            <p>Full guidance and reporting from the moment an incident happens.</p>
+        </div>
+        <div class="include-card">
+            <h3>Vehicle Damage Claims</h3>
+            <p>Fast, fair payouts to get drivers back on the road quickly.</p>
+        </div>
+        <div class="include-card">
+            <h3>Fleet Management Tools</h3>
+            <p>Track claims, add drivers, and manage coverage from one dashboard.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Sections -->
+<section class="faq-section">
+    <h2>Single Car Cover - Frequently Asked Questions</h2>
+    <div class="faq-accordion">
+        <div class="faq-item">
+            <button class="faq-question">What is third party and comprehensive Cover?</button>
+            <div class="faq-answer">
+                <p>Third party cover protects you against claims from other parties, while comprehensive cover includes damage to your own vehicle as well.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question">What we cover?</button>
+            <div class="faq-answer">
+                <p>We cover vehicle damage, third party liability, theft, and incident support for rideshare and delivery drivers.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question">How do I cancel my policy?</button>
+            <div class="faq-answer">
+                <p>You can cancel your policy anytime by contacting our support team or through your online dashboard.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question">How can I access my quote?</button>
+            <div class="faq-answer">
+                <p>Log into your account dashboard or check your email for your personalized quote link.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="faq-section">
+    <h2>Fleet Cover - Frequently Asked Questions</h2>
+    <div class="faq-accordion">
+        <div class="faq-item">
+            <button class="faq-question">1. What types of vehicles can be included in a fleet policy?</button>
+            <div class="faq-answer">
+                <p>Our fleet coverage supports sedans, SUVs, vans, and light commercial vehicles used for rideshare or delivery services.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question">2. How many vehicles do I need to qualify for fleet Cover?</button>
+            <div class="faq-answer">
+                <p>Fleet coverage is available for operators with 3 or more vehicles.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question">3. Can I add or remove vehicles during the policy term?</button>
+            <div class="faq-answer">
+                <p>Yes, you can add or remove vehicles at any time through your fleet management dashboard.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-question">4. How are premiums calculated for fleet Cover?</button>
+            <div class="faq-answer">
+                <p>Premiums are based on fleet size, vehicle types, driver history, and coverage level selected.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// FAQ Accordion functionality
+document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+        const faqItem = button.parentElement;
+        const isActive = faqItem.classList.contains('active');
+        
+        // Close all FAQ items
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.classList.remove('active');
+        });
+        
+        // Open clicked item if it wasn't active
+        if (!isActive) {
+            faqItem.classList.add('active');
+        }
+    });
+});
+</script>
