@@ -200,8 +200,7 @@ The repository is already configured for:
 ## Contact
 
 **Repository Owner:** misua  
-**GitHub:** https://github.com/misua/wordpress-copier  
-**SharedFare Contact:** xobicoronel@gmail.com
+**GitHub:** https://github.com/misua/wordpress-copier
 
 ---
 

@@ -230,23 +230,6 @@ See [Complete Setup Guide](docs/WORDPRESS-MCP-SETUP-GUIDE.md) for detailed troub
 - **v2.0.0** (2026-03-05) - Phase 1: Content management abilities
 - **v1.0.1** (2026-03-05) - Initial MCP abilities enabler
 
-## 🤝 Contributing
-
-This is a private repository for SharedFare WordPress site management. For questions or issues:
-
-**Contact:** xobicoronel@gmail.com
-
-## 📄 License
-
-Proprietary - SharedFare Internal Use Only
-
-## 🏢 About SharedFare
-
-**Website:** https://sharedfare.com.au  
-**Address:** Level 3, 320 Pitt Street, Sydney, NSW 2000  
-**Phone:** 02 7228 8177  
-**ABN:** 69202510648
-
 ---
 
 **Last Updated:** March 6, 2026  
