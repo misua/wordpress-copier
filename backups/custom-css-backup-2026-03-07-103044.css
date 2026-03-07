@@ -1,0 +1,412 @@
+/* SharedFare Custom Styles - Brand Colors: #3EAFFA */
+:root {
+    --primary-blue: #3EAFFA;
+    --primary-blue-dark: #2B9FE8;
+    --light-blue-bg: #E6F7FF;
+    --gradient-start: #6BC5FF;
+    --gradient-end: #3EAFFA;
+    --text-dark: #1E293B;
+    --text-light: #64748B;
+    --white: #FFFFFF;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--text-dark);
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* CRITICAL: Override header-transparent padding with maximum specificity */
+body #content.site-content,
+body div#content.site-content,
+html body #content.site-content,
+.header-transparent ~ #content.site-content,
+.header-transparent + * #content.site-content {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* Header - darker blue background */
+#site-header,
+.site-header,
+header.site-header,
+.header-desktop,
+.header-mobile {
+    background-color: #2B8FD9 !important;
+    padding: 1rem 2rem !important;
+    border-bottom: none !important;
+    margin-bottom: 0 !important;
+    border: none !important;
+}
+
+/* Target Elementor header section */
+#site-header .elementor-section,
+#site-header .elementor-container {
+    background-color: transparent !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Hide the logo image and replace with text */
+#site-header .the-logo img,
+#site-header img[alt="SharedFare"],
+.header-desktop img,
+.header-mobile img {
+    display: none !important;
+}
+
+/* Add SharedFare text to logo container - BIGGER AND BOLD */
+#site-header .the-logo:before,
+.header-desktop .the-logo:before {
+    content: "SharedFare";
+    color: #FFFFFF !important;
+    font-size: 2rem !important;
+    font-weight: 900 !important;
+    display: block;
+    line-height: 1;
+}
+
+/* Ensure logo link is visible */
+#site-header .the-logo a {
+    color: #FFFFFF !important;
+    text-decoration: none !important;
+    font-size: 2rem !important;
+    font-weight: 900 !important;
+}
+
+/* Remove transparent header class effects */
+.header-transparent {
+    background-color: #2B8FD9 !important;
+    position: relative !important;
+}
+
+/* Hero section */
+.hero-section {
+    background: linear-gradient(135deg, #6BC5FF 0%, #3EAFFA 100%);
+    padding: 6rem 2rem;
+    text-align: center;
+    color: var(--white);
+    margin-top: 0 !important;
+    margin-bottom: 4rem;
+    border-top: none !important;
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--white) !important;
+}
+
+.hero-section p {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--white) !important;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn {
+    padding: 0.75rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-blue-dark);
+    color: var(--white);
+}
+
+.btn-secondary {
+    background-color: var(--white);
+    color: var(--primary-blue);
+}
+
+/* Menu styling */
+#site-header .main-navigation a,
+#site-header #primary-menu a {
+    color: #FFFFFF !important;
+}
+
+.coverage-plans-section,
+.coverage-includes-section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.coverage-plans-section h2,
+.coverage-includes-section h2 {
+    text-align: center;
+    color: var(--primary-blue);
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    font-weight: 700;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #000;
+    max-width: 100%;
+    width: 100%;
+}
+
+.plans-grid,
+.includes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.plan-card,
+.include-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.plan-card:hover,
+.include-card:hover {
+    transform: translateY(-5px);
+}
+
+.plan-card h3,
+.include-card h3 {
+    color: var(--primary-blue);
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.plan-card p,
+.include-card p {
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* Fleet Coverage specific styles */
+.fleet-hero {
+    background: linear-gradient(135deg, #6BC5FF 0%, #3EAFFA 100%);
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--white);
+    margin-bottom: 3rem;
+}
+
+.fleet-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--white);
+}
+
+.fleet-hero p {
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    color: var(--white);
+}
+
+.benefits-section,
+.included-section,
+.pricing-section {
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.benefits-section h2,
+.included-section h2,
+.pricing-section h2 {
+    text-align: center;
+    color: var(--primary-blue);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.benefit-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    text-align: center;
+}
+
+.benefit-card h3 {
+    color: var(--primary-blue);
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.included-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.included-item h3 {
+    color: var(--primary-blue);
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.included-item ul {
+    list-style: none;
+    padding: 0;
+}
+
+.included-item li:before {
+    content: "✓ ";
+    color: var(--primary-blue);
+    font-weight: bold;
+}
+
+.pricing-table {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background: var(--white);
+    box-shadow: var(--card-shadow);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.pricing-table th,
+.pricing-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.pricing-table th {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    font-weight: 700;
+}
+
+.cta-section {
+    background-color: var(--primary-blue);
+    padding: 3rem 2rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.cta-section h2 {
+    color: var(--white);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.cta-section p {
+    color: var(--white);
+    margin-bottom: 2rem;
+}
+
+.faq-section {
+    padding: 4rem 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.faq-section h2 {
+    color: var(--primary-blue);
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #000;
+    width: 100%;
+}
+
+.faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.faq-item {
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 1.5rem;
+    background: var(--white);
+    border: none;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question:after {
+    content: "▼";
+    color: var(--primary-blue);
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question:after {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0 1.5rem;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+    padding: 1.5rem;
+}
+
+/* Hide footer with address and NIBA logo */
+.site-footer,
+footer.site-footer,
+.footer-widget-area,
+.footer-contact-info,
+.niba-logo {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+    .hero-section h1,
+    .fleet-hero h1 {
+        font-size: 2rem;
+    }
+    .plans-grid,
+    .includes-grid,
+    .benefits-grid,
+    .included-grid {
+        grid-template-columns: 1fr;
+    }
+}

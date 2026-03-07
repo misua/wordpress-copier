@@ -1,7 +1,7 @@
 # SharedFare WordPress - Operational Memory
 
 **Date Created:** March 5, 2026  
-**Last Updated:** March 5, 2026 (Session 4)
+**Last Updated:** March 7, 2026 (Session 7)
 
 ---
 
@@ -622,16 +622,36 @@ function add_mcp_metadata( $args, $name ) {
 - **SOLUTION NEEDED:** Manually edit Elementor template 267 to remove `header-transparent` class from CSS Classes field in Advanced tab
 - **DEFERRED:** Will address this issue in a future session when user has time
 
+### March 7, 2026 - Session 7 (Repository Cleanup & CSS Revert)
+- ✅ Cleaned up and organized GitHub repository (https://github.com/misua/wordpress-copier)
+  - Removed ~30 unnecessary files (duplicates, old plugin versions, test files)
+  - Created structured directory layout (plugins/, docs/, templates/, assets/)
+  - Created comprehensive README.md and WORDPRESS-MCP-SETUP-GUIDE.md
+  - Removed all personal contact information from documentation
+  - Configured .gitignore for security
+- ✅ **REVERTED ALL CUSTOM CSS:** Cleared all custom CSS from WordPress database
+  - **Backup Location:** `/home/hn/Desktop/sharedfare/backups/custom-css-backup-2026-03-07-103044.css` (8,258 characters)
+  - Used `sharedfare/get-custom-css` to retrieve current CSS
+  - Used `sharedfare/update-custom-css` with empty string to clear all custom CSS
+  - Site now displays default MaxxBizz theme styling
+  - **Rationale:** User requested complete revert to theme defaults
+- ✅ Updated operational_memory.md with Session 7 actions
+- ✅ Committed all changes to git repository
+- 📝 **MCP plugins remain active** for future use (WordPress Abilities API, MCP Adapter, SharedFare MCP Abilities Enabler, SharedFare Abilities v2)
+- 📝 **CSS Backup preserved** for potential future restoration
+
 ### Current Status
 **Active Theme:** Maxbizz v1.2.3.15
-**CSS Management:** WordPress Customizer Additional CSS (updated via MCP abilities)
+**CSS Management:** WordPress Customizer Additional CSS (currently empty - reverted to theme defaults)
 **Custom Abilities Plugin:** SharedFare Abilities v2 (v2.1.3) - all 14 abilities working
-**Brand Color:** #3EAFFA (light cyan blue, stored in WordPress database)
-**Primary Font:** Segoe UI (stored in WordPress database)
+**Brand Color:** Default MaxxBizz theme colors (custom #3EAFFA styling removed)
+**Primary Font:** Default MaxxBizz theme fonts (custom Segoe UI styling removed)
 
-**Development Method:** All CSS and content changes now use MCP abilities (no more manual plugin uploads)
+**Development Method:** All CSS and content changes use MCP abilities (no manual plugin uploads)
 
-**Known Pending Issue:** SiteGround Dynamic Cache (`x-proxy-cache-info: DT:1`) must be flushed via SiteGround Site Tools → Speed → Caching → Dynamic Cache → Flush Cache. Until this is done, anonymous visitors see stale cached content while logged-in users see current content.
+**Known Pending Issue:** SiteGround Dynamic Cache (`x-proxy-cache-info: DT:1`) can be flushed via SiteGround Site Tools → Speed → Caching → Dynamic Cache → Flush Cache to update cached content. (Logged-in users bypass cache automatically.)
+
+**CSS Backup:** Custom CSS backed up to `/home/hn/Desktop/sharedfare/backups/custom-css-backup-2026-03-07-103044.css` (8,258 characters) - can be restored using `sharedfare/update-custom-css` ability if needed
 
 **Key Files (Local):**
 - `/home/hn/Desktop/sharedfare/sharedfare-abilities-v2/` - Plugin source (v2.1.3)
@@ -839,4 +859,4 @@ The CSS is stored in WordPress Customizer's "Additional CSS" field and includes:
 ---
 
 *Document maintained by: Cascade AI Assistant*  
-*Last Updated: March 6, 2026 (Session 5) - Added MCP abilities workflow documentation*
+*Last Updated: March 7, 2026 (Session 7) - CSS reverted to theme defaults, repository cleaned and organized*
